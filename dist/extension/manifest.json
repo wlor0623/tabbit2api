@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "Tabbit OpenAI Bridge",
+  "version": "0.1.0",
+  "permissions": ["cookies", "tabs", "storage", "scripting"],
+  "host_permissions": ["https://web.tabbit.ai/*", "http://127.0.0.1/*"],
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://web.tabbit.ai/*"],
+      "js": ["content.js"],
+      "run_at": "document_start"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["page-hook.js"],
+      "matches": ["https://web.tabbit.ai/*"]
+    }
+  ]
+}
